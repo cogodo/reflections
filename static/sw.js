@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dayscore-v1';
+const CACHE_NAME = 'reflections-v2';
 const STATIC_ASSETS = [
   '/static/css/style.css',
   '/static/manifest.json',

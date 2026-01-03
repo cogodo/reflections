@@ -76,10 +76,8 @@
         // Close modal on HX-Trigger
         document.body.addEventListener('closeModal', function() {
             closeModal();
-            // Reload calendar to show updated cell
-            if (window.location.pathname === '/calendar') {
-                htmx.ajax('GET', window.location.href, {target: '.calendar-container', swap: 'innerHTML'});
-            }
+            // Calendar cells are already updated via hx-target on the form
+            // No need to reload the entire calendar
         });
         
         // Close modal on Escape key
