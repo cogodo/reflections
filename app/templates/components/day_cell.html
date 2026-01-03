@@ -1,0 +1,12 @@
+<div class="day-cell {{ day.score_class }}{% if day.is_today %} day-today{% endif %}{% if day.is_future %} day-future{% endif %}"
+     id="day-{{ day.date }}"
+     hx-get="/calendar/day/{{ day.date }}"
+     hx-target="#modal-content"
+     hx-trigger="click"
+     onclick="openModal()"
+     role="button"
+     tabindex="0"
+     aria-label="{{ day.date.strftime('%B %d') }}{% if day.entry %}, score {{ day.entry.score }}{% endif %}">
+    <div class="day-number">{{ day.day }}</div>
+</div>
+

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}Calendar - Reflections{% endblock %}
+
+{% block content %}
+<div class="calendar-page">
+    <div class="calendar-header">
+        <div class="calendar-nav">
+            <a href="/calendar?year={{ prev_year }}&month={{ prev_month }}" class="nav-arrow" title="Previous month">
+                ←
+            </a>
+            <h1 class="calendar-title">{{ month_name }} {{ year }}</h1>
+            <a href="/calendar?year={{ next_year }}&month={{ next_month }}" class="nav-arrow" title="Next month">
+                →
+            </a>
+        </div>
+        
+        <div class="calendar-actions">
+            <a href="/calendar?year={{ today.year }}&month={{ today.month }}" class="btn btn-secondary btn-sm">
+                Today
+            </a>
+        </div>
+    </div>
+    
+    <div class="calendar-container">
+        <!-- Weekday headers -->
+        <div class="calendar-weekdays">
+            <div class="weekday">Sun</div>
+            <div class="weekday">Mon</div>
+            <div class="weekday">Tue</div>
+            <div class="weekday">Wed</div>
+            <div class="weekday">Thu</div>
+            <div class="weekday">Fri</div>
+            <div class="weekday">Sat</div>
+        </div>
+        
+        <!-- Calendar grid -->
+        <div class="calendar-grid">
+            {% for week in weeks %}
+                {% for day in week %}
+                    {% if day %}
+                        {% include "components/day_cell.html" %}
+                    {% else %}
+                        <div class="day-cell day-empty"></div>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    
+    <!-- Score legend -->
+    <div class="calendar-legend">
+        <span class="legend-label">Difficult</span>
+        <div class="score-legend compact">
+            <div class="legend-item">
+                <div class="legend-color score-0"></div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color score-2"></div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color score-5"></div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color score-7"></div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color score-10"></div>
+            </div>
+        </div>
+        <span class="legend-label">Great</span>
+    </div>
+</div>
+{% endblock %}

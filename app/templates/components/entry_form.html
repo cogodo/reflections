@@ -1,0 +1,81 @@
+<div class="entry-modal">
+    <div class="modal-header">
+        <h2 class="modal-title">{{ entry_date.strftime('%A, %B %d, %Y') }}</h2>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    </div>
+    
+    {% if is_future %}
+    <div class="modal-body">
+        <div class="future-message">
+            <div class="future-icon">🌙</div>
+            <p>This day hasn't arrived yet.</p>
+            <p class="future-hint">Return on {{ entry_date.strftime('%B %d') }} to capture your reflection.</p>
+        </div>
+    </div>
+    {% else %}
+    
+    {% if error %}
+    <div class="alert alert-error">{{ error }}</div>
+    {% endif %}
+    
+    <form hx-post="/calendar/day/{{ entry_date }}"
+          hx-target="#day-{{ entry_date }}"
+          hx-swap="outerHTML"
+          class="entry-form">
+        
+        <div class="form-group">
+            <label class="form-label">How was your day?</label>
+            <div class="score-picker">
+                {% for i in range(11) %}
+                <label class="score-option">
+                    <input type="radio" 
+                           name="score" 
+                           value="{{ i }}" 
+                           {% if entry and entry.score == i %}checked{% endif %}
+                           required>
+                    <span class="score-badge score-{{ i }}">{{ i }}</span>
+                </label>
+                {% endfor %}
+            </div>
+            <div class="score-labels">
+                <span>Difficult</span>
+                <span>Great</span>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="summary" class="form-label">
+                What happened?
+                <span class="char-count" id="char-count">
+                    <span id="current-count">{{ entry.summary|length if entry else 0 }}</span>/200
+                </span>
+            </label>
+            <textarea 
+                id="summary"
+                name="summary" 
+                class="form-textarea" 
+                placeholder="Capture the essence of today..."
+                maxlength="200"
+                required
+                oninput="document.getElementById('current-count').textContent = this.value.length"
+            >{{ entry.summary if entry else '' }}</textarea>
+        </div>
+        
+        <div class="modal-actions">
+            {% if entry %}
+            <button type="button" 
+                    class="btn btn-danger btn-outline"
+                    hx-delete="/calendar/day/{{ entry_date }}"
+                    hx-target="#day-{{ entry_date }}"
+                    hx-swap="outerHTML"
+                    hx-confirm="Remove this reflection?">
+                Delete
+            </button>
+            {% endif %}
+            <button type="submit" class="btn btn-primary">
+                {{ 'Update' if entry else 'Save Reflection' }}
+            </button>
+        </div>
+    </form>
+    {% endif %}
+</div>

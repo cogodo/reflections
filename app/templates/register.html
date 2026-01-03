@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Reflections{% endblock %}
+
+{% block body %}
+<div class="auth-page">
+    <div class="auth-container">
+        <div class="auth-header">
+            <div class="auth-logo">
+                <span class="brand-icon large">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Crescent moon made of ink -->
+                        <circle cx="24" cy="24" r="18" fill="#c2714f"/>
+                        <circle cx="30" cy="19" r="14" fill="#faf8f4"/>
+                        <!-- Small ink dots/stars -->
+                        <circle cx="10" cy="14" r="2" fill="#7a9b8a"/>
+                        <circle cx="14" cy="38" r="1.5" fill="#d4a85c"/>
+                        <circle cx="38" cy="36" r="1.8" fill="#7a9b8a"/>
+                    </svg>
+                </span>
+            </div>
+            <h1 class="auth-title">Begin Your Journey</h1>
+            <p class="auth-subtitle">Create your personal reflection space</p>
+        </div>
+        
+        <form class="auth-form" method="POST" action="/register">
+            {% if error %}
+            <div class="alert alert-error">
+                {{ error }}
+            </div>
+            {% endif %}
+            
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="form-input" 
+                    placeholder="you@example.com"
+                    required 
+                    autofocus
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="form-input" 
+                    placeholder="Choose a password"
+                    required
+                    minlength="8"
+                >
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-full">
+                Create Account
+            </button>
+        </form>
+        
+        <div class="auth-footer">
+            <p>Already have an account? <a href="/login">Sign in</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

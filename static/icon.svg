@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <defs>
+    <linearGradient id="moonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c2714f"/>
+      <stop offset="100%" style="stop-color:#a85a3a"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background - aged paper -->
+  <rect width="192" height="192" rx="32" fill="#f5f0e6"/>
+  
+  <!-- Subtle border -->
+  <rect x="8" y="8" width="176" height="176" rx="26" fill="none" stroke="#d4cfc3" stroke-width="1"/>
+  
+  <!-- Crescent moon -->
+  <circle cx="96" cy="96" r="56" fill="url(#moonGrad)"/>
+  <circle cx="116" cy="80" r="44" fill="#f5f0e6"/>
+  
+  <!-- Decorative ink dots -->
+  <circle cx="48" cy="52" r="6" fill="#7a9b8a"/>
+  <circle cx="60" cy="148" r="4" fill="#d4a85c"/>
+  <circle cx="148" cy="140" r="5" fill="#7a9b8a"/>
+  <circle cx="156" cy="56" r="3" fill="#d4a85c" opacity="0.7"/>
+</svg>

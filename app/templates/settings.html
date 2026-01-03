@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Settings - Reflections{% endblock %}
+
+{% block content %}
+<div class="settings-page">
+    <h1 class="page-title">Settings</h1>
+    
+    <div class="settings-section">
+        <h2 class="section-title">Account</h2>
+        
+        <div class="settings-card">
+            <div class="settings-item">
+                <div class="settings-item-info">
+                    <div class="settings-item-label">Email</div>
+                    <div class="settings-item-value">{{ user.email }}</div>
+                </div>
+            </div>
+            
+            <div class="settings-item">
+                <div class="settings-item-info">
+                    <div class="settings-item-label">Journaling since</div>
+                    <div class="settings-item-value">{{ user.created_at.strftime('%B %d, %Y') }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="settings-section">
+        <h2 class="section-title">Danger Zone</h2>
+        
+        <div class="settings-card settings-card-danger">
+            <div class="settings-item">
+                <div class="settings-item-info">
+                    <div class="settings-item-label">Delete Account</div>
+                    <div class="settings-item-description">
+                        Permanently delete your account and all your reflections. This cannot be undone.
+                    </div>
+                </div>
+                <form method="POST" action="/settings/delete-account" 
+                      onsubmit="return confirm('Are you sure you want to delete your account? All your reflections will be permanently lost.')">
+                    <button type="submit" class="btn btn-danger">
+                        Delete Account
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
