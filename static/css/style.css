@@ -443,10 +443,21 @@ h1, h2, h3, h4, h5, h6 {
 .auth-header {
     text-align: center;
     margin-bottom: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .auth-logo {
-    margin-bottom: var(--space-md);
+    width: 40px;
+    height: 40px;
+    margin: 0 auto var(--space-md) auto;
+}
+
+.auth-logo svg {
+    display: block;
+    width: 40px;
+    height: 40px;
 }
 
 .auth-title {

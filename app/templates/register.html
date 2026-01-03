@@ -7,17 +7,10 @@
     <div class="auth-container">
         <div class="auth-header">
             <div class="auth-logo">
-                <span class="brand-icon large">
-                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Crescent moon made of ink -->
-                        <circle cx="24" cy="24" r="18" fill="#c2714f"/>
-                        <circle cx="30" cy="19" r="14" fill="#faf8f4"/>
-                        <!-- Small ink dots/stars -->
-                        <circle cx="10" cy="14" r="2" fill="#7a9b8a"/>
-                        <circle cx="14" cy="38" r="1.5" fill="#d4a85c"/>
-                        <circle cx="38" cy="36" r="1.8" fill="#7a9b8a"/>
-                    </svg>
-                </span>
+                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#c2714f"/>
+                    <circle cx="16" cy="10" r="8" fill="#faf8f4"/>
+                </svg>
             </div>
             <h1 class="auth-title">Begin Your Journey</h1>
             <p class="auth-subtitle">Create your personal reflection space</p>
@@ -52,7 +45,20 @@
                     class="form-input" 
                     placeholder="Choose a password"
                     required
-                    minlength="8"
+                    minlength="6"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="password_confirm" class="form-label">Confirm Password</label>
+                <input 
+                    type="password" 
+                    id="password_confirm" 
+                    name="password_confirm" 
+                    class="form-input" 
+                    placeholder="Confirm your password"
+                    required
+                    minlength="6"
                 >
             </div>
             
