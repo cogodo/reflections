@@ -74,6 +74,7 @@ async def login(
         httponly=True,
         max_age=settings.access_token_expire_minutes * 60,
         samesite="lax",
+        secure=not settings.debug,  # Secure cookies in production (HTTPS)
     )
     
     return Token(access_token=access_token)

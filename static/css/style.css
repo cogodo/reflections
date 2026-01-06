@@ -811,7 +811,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .score-picker {
     display: flex;
-    gap: 6px;
+    gap: 4px;
     justify-content: space-between;
     padding: var(--space-sm);
     background: var(--paper);
@@ -821,6 +821,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .score-option {
     cursor: pointer;
+    flex: 1;
+    display: flex;
+    justify-content: center;
 }
 
 .score-option input {
@@ -833,12 +836,12 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    font-size: 0.85rem;
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
     font-weight: 600;
     font-family: var(--font-sans);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     transition: all var(--transition-fast);
     opacity: 0.5;
 }
@@ -1010,9 +1013,9 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .score-badge {
-        width: 26px;
-        height: 26px;
-        font-size: 0.75rem;
+        width: 24px;
+        height: 24px;
+        font-size: 0.7rem;
     }
     
     .settings-item {

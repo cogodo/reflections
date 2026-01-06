@@ -125,6 +125,7 @@ async def login_submit(
         httponly=True,
         max_age=settings.access_token_expire_minutes * 60,
         samesite="lax",
+        secure=not settings.debug,  # Secure cookies in production (HTTPS)
     )
     return response
 
@@ -176,7 +177,8 @@ async def register_submit(
     # Create user
     user = User(email=email, hashed_password=get_password_hash(password))
     db.add(user)
-    await db.flush()
+    await db.commit()
+    await db.refresh(user)
     
     # Log them in
     access_token = create_access_token(data={"sub": str(user.id)})
@@ -187,6 +189,7 @@ async def register_submit(
         httponly=True,
         max_age=settings.access_token_expire_minutes * 60,
         samesite="lax",
+        secure=not settings.debug,  # Secure cookies in production (HTTPS)
     )
     return response
 
